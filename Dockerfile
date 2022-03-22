@@ -69,10 +69,8 @@ RUN mkdir -p /moveit_ws/src
 WORKDIR /moveit_ws/src
 
 RUN ["/bin/bash", "-c", "source /opt/ros/galactic/setup.bash &&\
-    git clone https://github.com/ros-planning/moveit2.git -b main"] 
-
-RUN ["/bin/bash", "-c", "source /opt/ros/galactic/setup.bash &&\    
-    for repo in moveit2/moveit2.repos do vcs import < "$repo"; done &&\
+    git clone https://github.com/ros-planning/moveit2.git -b main &&\    
+    vcs import < moveit2/moveit2.repos &&\
     rosdep install -r --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y"]
 
 # reduce size by removing apt cache

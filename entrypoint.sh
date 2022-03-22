@@ -2,6 +2,6 @@
 set -e
 
 # setup ros environment
-source "/opt/ros/foxy/setup.bash"
+source "/opt/ros/galactic/setup.bash"
 source "/moveit_ws/install/setup.bash"
 exec "$@"
