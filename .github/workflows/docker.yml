@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - 'foxy'
+      - 'galactic'
+      
+  schedule:
+    - cron: "38 5 * * *"
 
 jobs:
   docker:
