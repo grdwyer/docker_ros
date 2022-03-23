@@ -25,4 +25,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: gdwyer/ros:${BRANCH_NAME}
+          tags: gdwyer/ros:${{env.BRANCH_NAME}}
