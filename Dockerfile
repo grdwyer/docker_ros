@@ -41,6 +41,8 @@ RUN apt-get update && apt-get install -y \
     ros-$ROSDISTRO-rqt-common-plugins \
     ros-$ROSDISTRO-rqt-action \
     ros-$ROSDISTRO-rviz2 \
+    ros-$ROSDISTRO-ros2-control \
+    ros-$ROSDISTRO-ros2-controllers \
     python3-pykdl
 
 RUN apt-get update && apt-get install -y \
