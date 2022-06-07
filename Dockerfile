@@ -1,4 +1,4 @@
-ARG ROSDISTRO=galactic
+ARG ROSDISTRO=humble
 
 FROM ros:$ROSDISTRO
 
@@ -28,7 +28,6 @@ RUN apt-get update && apt-get install -y \
     wget \
     ros-$ROSDISTRO-rqt \
     ros-$ROSDISTRO-rqt-topic \
-    ros-$ROSDISTRO-rqt-top \
     ros-$ROSDISTRO-rqt-srv \
     ros-$ROSDISTRO-rqt-shell \
     ros-$ROSDISTRO-rqt-service-caller \
@@ -70,8 +69,8 @@ RUN pip3 install -U \
 RUN mkdir -p /moveit_ws/src
 WORKDIR /moveit_ws/src
 
-RUN ["/bin/bash", "-c", "source /opt/ros/galactic/setup.bash &&\
-    git clone https://github.com/ros-planning/moveit2.git -b main &&\    
+RUN ["/bin/bash", "-c", "source /opt/ros/$ROS_DISTRO/setup.bash &&\
+    git clone https://github.com/ros-planning/moveit2.git -b $ROS_DISTRO &&\    
     vcs import < moveit2/moveit2.repos &&\
     rosdep install -r --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y"]
 
@@ -79,7 +78,7 @@ RUN ["/bin/bash", "-c", "source /opt/ros/galactic/setup.bash &&\
 RUN ["/bin/bash", "-c", "rm -rf /var/lib/apt/lists/*"]
 
 WORKDIR /moveit_ws
-RUN ["/bin/bash", "-c", "source /opt/ros/galactic/setup.bash &&\
+RUN ["/bin/bash", "-c", "source /opt/ros/$ROS_DISTRO/setup.bash &&\
     colcon build --executor sequential --cmake-args -DCMAKE_BUILD_TYPE=Release"]
 
 

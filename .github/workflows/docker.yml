@@ -3,7 +3,7 @@ name: DockerHub
 on:
   push:
     branches:
-      - 'galactic'
+      - 'humble'
       
   schedule:
     - cron: "49 5 * * 1"
